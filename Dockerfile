@@ -14,8 +14,7 @@ ENV STACKATO_DOCKER True
 ENV GOVERSION 1.2.1
 
 RUN mkdir /docker
-ADD Dockerfile.sh /docker/
-ADD clean.sh /docker/
+ADD Dockerfile.sh clean.sh package_list /docker/
 RUN /docker/Dockerfile.sh
 
 ADD stackon.json /

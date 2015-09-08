@@ -7,3 +7,5 @@
 # Apt cache
 apt-get -qy clean
 rm -rf /var/lib/apt/lists /var/cache/debconf /var/cache/apt
+
+rm -rf /docker
