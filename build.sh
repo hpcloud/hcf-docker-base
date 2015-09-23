@@ -11,5 +11,8 @@ docker_tag=${docker_image_name}:${git_branch}-${git_short_hash}
 
 if docker build --rm=true --tag="${docker_tag}" . 1>&2; then
         echo ${docker_tag}
+else
+        echo "Failed to build ${docker_tag}"
+        exit 1
 fi
 
