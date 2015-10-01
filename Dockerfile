@@ -4,17 +4,16 @@
 #   * Install common packages to minimize size of other images
 #   * Potentially add configuration as environment variables
 
-FROM ubuntu:12.04
+FROM helioncf/ubuntu-core
 
 # For future use.
 ENV STACKATO_DOCKER True
 
-# Version of Go tarball at /opt/golang. Expected to be used to compile the Go
-# components.
-ENV GOVERSION 1.2.1
-
-RUN mkdir /docker
-ADD Dockerfile.sh clean.sh package_list /docker/
-RUN /docker/Dockerfile.sh
+RUN add-apt-repository --yes ppa:git-core/ppa \
+    add-apt-repository --yes ppa:evarlast/golang1.4 \
+    && apt-get update \
+    && apt-get install --assume-yes bzr git golang mercurial wget \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD stackon.json /
