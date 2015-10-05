@@ -10,7 +10,7 @@ FROM helioncf/ubuntu-core
 ENV STACKATO_DOCKER True
 
 RUN add-apt-repository --yes ppa:git-core/ppa \
-    add-apt-repository --yes ppa:evarlast/golang1.4 \
+    && add-apt-repository --yes ppa:evarlast/golang1.4 \
     && apt-get update \
     && apt-get install --assume-yes bzr git golang mercurial wget \
     && apt-get clean \
